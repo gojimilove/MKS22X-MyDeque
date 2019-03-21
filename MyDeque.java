@@ -5,14 +5,21 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
+    start = initialCapacity/2;
+    end = initialCapacity/2;
+    size = end-start;
   }
 
   public MyDeque(int initialCapacity){
-
+    data = (E[])new Object[initialCapacity];
+    start = initialCapacity/2;
+    end = initialCapacity/2;
+    size = end-start;
   }
 
   public int size(){
-    return -1;
+    //number of elements in use, from start to end
+    return size;
   }
 
   public String toString(){
@@ -24,23 +31,27 @@ public class MyDeque<E>{
     //assuming there's more space in the beginning
     data[start-1] = element;
     start--;
+    size++;
   }
 
   public void addLast(E element){
     //assuming there's more space in the end
     data[end+1] = element;
     end++;
+    size++;
   }
 
   public E removeFirst(){
     E first = data[start];
     start++;
+    size--;
     return first;
   }
 
   public E removeLast(){
     E last = data[end];
     end--;
+    size--;
     return last;
   }
 
