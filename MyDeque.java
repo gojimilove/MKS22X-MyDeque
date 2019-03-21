@@ -46,15 +46,19 @@ public class MyDeque<E>{
 
   public void addFirst(E element){
     //assuming there's more space in the beginning
-    data[start-1] = element;
-    start--;
+    if (size > 0) start--;
+    if (start > 0) {
+      data[start] = element;
+    }
     size++;
   }
 
   public void addLast(E element){
     //assuming there's more space in the end
-    data[end+1] = element;
-    end++;
+    if (size > 0) end++;
+    if (end < data.length-1) {
+      data[end] = element;
+    }
     size++;
   }
 
