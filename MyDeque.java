@@ -5,8 +5,8 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
-    start = initialCapacity/2;
-    end = initialCapacity/2;
+    start = 5;
+    end = 5;
     size = end-start;
   }
 
@@ -23,7 +23,24 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String s = "";
+    String s = "{";
+    if (end > start) {
+      for (int i = start; i <= end; i++){
+        s+= data[i];
+        if (i < end) s+=" ";
+      }
+    }
+    if (end < start) {
+      for (int i = start; i < data.length; i++) {
+        s+= data[i];
+        if (i < data.length-1) s+= " ";
+      }
+      for (int i = 0; i <= end; i++) {
+        s+= data[i];
+        if (i < end) s+=" ";
+      }
+    }
+    s+="}";
     return s;
   }
 
