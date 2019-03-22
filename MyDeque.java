@@ -26,7 +26,12 @@ public class MyDeque<E>{
   }
 
   public void resize() {
-
+    Object[] newArray = new Object[size() * 2];
+    //copy values over
+    // for (int i = 0; i < size(); i++) {
+    //   newArray[i] = data[i];
+    // }
+    data = newArray;
   }
 
   public String toString(){
@@ -90,7 +95,7 @@ public class MyDeque<E>{
   }
 
   public E removeFirst(){
-    if (data[start] == null || size() <= 0) throw new NoSuchElementException("bad");
+    if (data[start] == null || size() <= 0) throw new NoSuchElementException("cant remove a null value");
     E first = data[start];
     data[start] = null;
     if (start < data.length-1) start++;
@@ -100,7 +105,7 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
-    if (data[end] == null || size() <= 0) throw new NoSuchElementException("bad");
+    if (data[end] == null || size() <= 0) throw new NoSuchElementException("cant remove a null value");
     E last = data[end];
     data[end] = null;
     if (end > 0) end--;
@@ -110,12 +115,12 @@ public class MyDeque<E>{
   }
 
   public E getFirst(){
-    if (data[start] == null) throw new NoSuchElementException("bad");
+    if (data[start] == null) throw new NoSuchElementException("cant return a null value");
     return data[start];
   }
 
   public E getLast(){
-    if (data[end] == null) throw new NoSuchElementException("bad");
+    if (data[end] == null) throw new NoSuchElementException("cant return a null value");
     return data[end];
   }
 
