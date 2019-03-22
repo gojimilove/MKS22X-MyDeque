@@ -25,6 +25,10 @@ public class MyDeque<E>{
     return size;
   }
 
+  public void resize() {
+
+  }
+
   public String toString(){
     String s = "{";
     if (end > start) {
@@ -64,7 +68,7 @@ public class MyDeque<E>{
       start = data.length-1;
       data[start] = element;
     } else {
-      //resize
+      resize();
     }
     size++;
   }
@@ -80,13 +84,13 @@ public class MyDeque<E>{
       end = 0;
       data[end] = element;
     } else {
-      //resize
+      resize();
     }
     size++;
   }
 
   public E removeFirst(){
-    if (data[start] == null) throw new NoSuchElementException("bad");
+    if (data[start] == null || size() <= 0) throw new NoSuchElementException("bad");
     E first = data[start];
     data[start] = null;
     if (start < data.length-1) start++;
@@ -96,7 +100,7 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
-    if (data[end] == null) throw new NoSuchElementException("bad");
+    if (data[end] == null || size() <= 0) throw new NoSuchElementException("bad");
     E last = data[end];
     data[end] = null;
     if (end > 0) end--;
