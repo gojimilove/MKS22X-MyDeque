@@ -89,7 +89,8 @@ public class MyDeque<E>{
     if (data[start] == null) throw new NoSuchElementException("bad");
     E first = data[start];
     data[start] = null;
-    start++;
+    if (start < data.length-1) start++;
+    else start = 0;
     size--;
     return first;
   }
@@ -98,7 +99,8 @@ public class MyDeque<E>{
     if (data[end] == null) throw new NoSuchElementException("bad");
     E last = data[end];
     data[end] = null;
-    end--;
+    if (end > 0) end--;
+    else end = data.length-1;
     size--;
     return last;
   }
