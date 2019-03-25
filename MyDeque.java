@@ -25,12 +25,26 @@ public class MyDeque<E>{
     return size;
   }
 
+  @SuppressWarnings("unchecked")
   public void resize() {
-    Object[] newArray = new Object[size() * 2];
+    E[] newArray = (E[])new Object[size() * 2];
+    int s = newArray.length / 4;
     //copy values over
-    // for (int i = 0; i < size(); i++) {
-    //   newArray[i] = data[i];
-    // }
+    if (start < end) {
+	    for (int i = 0; i < size(); i++) {
+	      newArray[s+i] = data[start+i];
+	    }
+	  }
+	  else if (end < start) {
+	  	for (int i = start; i < data.length; i++) {
+	  		newArray[s] = data[i];
+	  		s++;
+	  	}
+	  	for (int i = 0; i <= end; i++) {
+	  		newArray[s] = data[i];
+	  		s++;
+	  	}
+	  }
     data = newArray;
   }
 
@@ -44,7 +58,7 @@ public class MyDeque<E>{
         }
       }
     }
-    if (end < start) {
+    else if (end < start) {
       for (int i = start; i < data.length; i++) {
         if (data[i] != null) {
           s+= data[i];
@@ -63,10 +77,10 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
-    if (element == null) throw new NullPointerException("null is fake");
+    if (element == null) throw new NullPointerException("addfirst");
     if (size() == 0) data[start] = element;
     //assuming there's more space in the beginning
-    if (start > 0 && (start < end || start > end+1)) {
+    else if (start > 0 && (start < end || start > end+1)) {
       if (size() > 0) start--;
       data[start] = element;
     } else if (end < data.length-1) {
@@ -74,15 +88,16 @@ public class MyDeque<E>{
       data[start] = element;
     } else {
       resize();
+      addFirst(element);
     }
     size++;
   }
 
   public void addLast(E element){
-    if (element == null) throw new NullPointerException("null is fake");
+    if (element == null) throw new NullPointerException("addlast");
     //assuming there's more space in the end
     if (size() == 0) data[end] = element;
-    if (end < data.length-1 && (end > start || end < start-1)) {
+    else if (end < data.length-1 && (end > start || end < start-1)) {
       if (size() > 0) end++;
       data[end] = element;
     } else if (start > 0) {
@@ -90,12 +105,13 @@ public class MyDeque<E>{
       data[end] = element;
     } else {
       resize();
+      addLast(element);
     }
     size++;
   }
 
   public E removeFirst(){
-    if (data[start] == null || size() <= 0) throw new NoSuchElementException("cant remove a null value");
+    if (size() <= 0) throw new NoSuchElementException("removefirst");
     E first = data[start];
     data[start] = null;
     if (start < data.length-1) start++;
@@ -105,7 +121,7 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
-    if (data[end] == null || size() <= 0) throw new NoSuchElementException("cant remove a null value");
+    if (size() <= 0) throw new NoSuchElementException("removelast");
     E last = data[end];
     data[end] = null;
     if (end > 0) end--;
@@ -115,12 +131,12 @@ public class MyDeque<E>{
   }
 
   public E getFirst(){
-    if (data[start] == null) throw new NoSuchElementException("cant return a null value");
+    if (size() <= 0) throw new NoSuchElementException("getfirst");
     return data[start];
   }
 
   public E getLast(){
-    if (data[end] == null) throw new NoSuchElementException("cant return a null value");
+    if (size() <= 0) throw new NoSuchElementException("getlast");
     return data[end];
   }
 
