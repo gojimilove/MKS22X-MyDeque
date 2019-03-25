@@ -62,7 +62,7 @@ public class MyDeque<E>{
       for (int i = start; i < data.length; i++) {
         if (data[i] != null) {
           s+= data[i];
-          if (i < data.length-1) s+= " ";
+          s+= " ";
         }
       }
       for (int i = 0; i <= end; i++) {
@@ -90,7 +90,7 @@ public class MyDeque<E>{
 
   public void addFirst(E element){
     if (element == null) throw new NullPointerException("addfirst");
-    
+
     if (size() == 0) {
     	data[start] = element;
     	size++;
@@ -99,12 +99,12 @@ public class MyDeque<E>{
       if (size() > 0) start--;
       data[start] = element;
       size++;
-    } 
+    }
     else if (start == 0 && end < data.length-1) {
       start = data.length-1;
       data[start] = element;
       size++;
-    } 
+    }
     else{
     	//System.out.println("RESIZE");
       resize();
@@ -114,7 +114,7 @@ public class MyDeque<E>{
 
   public void addLast(E element){
     if (element == null) throw new NullPointerException("addlast");
-    
+
     if (size() == 0) {
     	data[end] = element;
     	size++;
@@ -123,12 +123,12 @@ public class MyDeque<E>{
       if (size() > 0) end++;
       data[end] = element;
       size++;
-    } 
+    }
     else if (end == data.length-1 && start > 0) {
       end = 0;
       data[end] = element;
       size++;
-    } 
+    }
     else{
     	//System.out.println("RESIZE");
       resize();
@@ -169,28 +169,47 @@ public class MyDeque<E>{
   public static void main(String[]args) {
   	MyDeque<Integer> tester = new MyDeque<>();
   	tester.printArray();
-  	tester.addFirst(5);
+    System.out.println(tester);
+  	tester.addFirst(0);
   	tester.printArray();
+    System.out.println(tester);
+  	tester.addLast(1);
+  	tester.printArray();
+    System.out.println(tester);
+  	tester.addFirst(2);
+  	tester.printArray();
+    System.out.println(tester);
+  	tester.addLast(3);
+  	tester.printArray();
+    System.out.println(tester);
+  	tester.addLast(4);
+  	tester.printArray();
+    System.out.println(tester);
   	tester.addLast(5);
   	tester.printArray();
-  	tester.addFirst(5);
+    System.out.println(tester);
+  	tester.addLast(6);
   	tester.printArray();
-  	tester.addLast(5);
+    System.out.println(tester);
+  	tester.addLast(7);
   	tester.printArray();
-  	tester.addLast(5);
+    System.out.println(tester);
+  	tester.addLast(8);
   	tester.printArray();
-  	tester.addLast(5);
+    System.out.println(tester);
+  	tester.addLast(9);
   	tester.printArray();
-  	tester.addLast(5);
+    System.out.println(tester);
+  	tester.addFirst(10);
   	tester.printArray();
-  	tester.addLast(5);
-  	tester.printArray();
-  	tester.addLast(5);
-  	tester.printArray();
-  	tester.addLast(5);
-  	tester.printArray();
-  	tester.addFirst(5);
-  	tester.printArray();
-  	
+    System.out.println(tester);
+    tester.removeLast();
+    tester.printArray();
+    System.out.println(tester);
+    tester.removeFirst();
+    tester.printArray();
+    System.out.println(tester);
+    System.out.println(tester.getFirst());
+    System.out.println(tester.getLast());
   }
 }
