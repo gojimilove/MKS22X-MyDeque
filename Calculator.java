@@ -3,10 +3,13 @@ public class Calculator{
   *Assume valid postfix notation, separated by spaces.
   */
   public static double eval(String s){
-    MyDeque<String> tokens = new MyDeque<>(s.length());
-    for (int i = 0; i < s.length(); i++) {
-      String token = "";
+    MyDeque<Integer> tokens = new MyDeque<>(s.length());
+    for (int i = 0; i < s.length; i++) {
+      //if its an integer add it to the Deque
+      //if its an operator pop last 2 elements of deque and add a new one
     }
+    //return tokens.getLast();
+    return -1;
   }
 
   public static void main(String[] args) {
