@@ -3,12 +3,54 @@ public class Calculator{
   *Assume valid postfix notation, separated by spaces.
   */
   public static double eval(String s){
-    MyDeque<Integer> tokens = new MyDeque<>(s.length());
+    MyDeque<Double> tokens = new MyDeque<>(s.length());
     String[] elements = s.split(" ");
     for (int i = 0; i < elements.length; i++) {
-      if (isDouble(elements[i])) System.out.println(elements[i]);
       //if its an integer add it to the Deque
+      if (isDouble(elements[i])) {
+        tokens.addLast(Double.parseDouble(elements[i]));
+        System.out.println(tokens);
+        //System.out.println(elements[i]);
+      }
       //if its an operator pop last 2 elements of deque and add a new one
+      else if ("+-*/%".contains(elements[i])) {
+        System.out.println(elements[i]);
+        // if (elements[i].equals("+")) {
+        //   Double x = tokens.removeLast() + tokens.removeLast();
+        //   System.out.println(tokens);
+        //   tokens.addLast(x);
+        //   System.out.println(tokens);
+        //   System.out.println(x);
+        // }
+        // if (elements[i].equals("-")) {
+        //   Double x = tokens.removeLast() - tokens.removeLast();
+        //   System.out.println(tokens);
+        //   tokens.addLast(x);
+        //   System.out.println(tokens);
+        //   System.out.println(x);
+        // }
+        // if (elements[i].equals("*")) {
+        //   Double x = tokens.removeLast() * tokens.removeLast();
+        //   System.out.println(tokens);
+        //   tokens.addLast(x);
+        //   System.out.println(tokens);
+        //   System.out.println(x);
+        // }
+        // if (elements[i].equals("/")) {
+        //   Double x = tokens.removeLast() / tokens.removeLast();
+        //   System.out.println(tokens);
+        //   tokens.addLast(x);
+        //   System.out.println(tokens);
+        //   System.out.println(x);
+        // }
+        // if (elements[i].equals("%")) {
+        //   Double x = tokens.removeLast() % tokens.removeLast();
+        //   System.out.println(tokens);
+        //   tokens.addLast(x);
+        //   System.out.println(tokens);
+        //   System.out.println(x);
+        // }
+      }
     }
     //return tokens.getLast();
     return -1;
@@ -16,9 +58,11 @@ public class Calculator{
 
   public static boolean isDouble(String s) {
     try {
+      //try to make it a double, if successful return true
       Double.parseDouble(s);
       return true;
     } catch(Exception e) {
+      //cant turn it into a double, return false
       return false;
     }
   }
