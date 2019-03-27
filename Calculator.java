@@ -15,41 +15,47 @@ public class Calculator{
       //if its an operator pop last 2 elements of deque and add a new one
       else if ("+-*/%".contains(elements[i])) {
         System.out.println(elements[i]);
-        // if (elements[i].equals("+")) {
-        //   Double x = tokens.removeLast() + tokens.removeLast();
-        //   System.out.println(tokens);
-        //   tokens.addLast(x);
-        //   System.out.println(tokens);
-        //   System.out.println(x);
-        // }
-        // if (elements[i].equals("-")) {
-        //   Double x = tokens.removeLast() - tokens.removeLast();
-        //   System.out.println(tokens);
-        //   tokens.addLast(x);
-        //   System.out.println(tokens);
-        //   System.out.println(x);
-        // }
-        // if (elements[i].equals("*")) {
-        //   Double x = tokens.removeLast() * tokens.removeLast();
-        //   System.out.println(tokens);
-        //   tokens.addLast(x);
-        //   System.out.println(tokens);
-        //   System.out.println(x);
-        // }
-        // if (elements[i].equals("/")) {
-        //   Double x = tokens.removeLast() / tokens.removeLast();
-        //   System.out.println(tokens);
-        //   tokens.addLast(x);
-        //   System.out.println(tokens);
-        //   System.out.println(x);
-        // }
-        // if (elements[i].equals("%")) {
-        //   Double x = tokens.removeLast() % tokens.removeLast();
-        //   System.out.println(tokens);
-        //   tokens.addLast(x);
-        //   System.out.println(tokens);
-        //   System.out.println(x);
-        // }
+        if (elements[i].equals("+")) {
+          Double x = tokens.removeLast() + tokens.removeLast();
+          System.out.println(tokens);
+          tokens.addLast(x);
+          System.out.println(tokens);
+          System.out.println(x);
+        }
+        if (elements[i].equals("-")) {
+          Double x = tokens.removeLast();
+          Double y = tokens.removeLast();
+          Double z = y - x;
+          System.out.println(tokens);
+          tokens.addLast(z);
+          System.out.println(tokens);
+          System.out.println(z);
+        }
+        if (elements[i].equals("*")) {
+          Double x = tokens.removeLast() * tokens.removeLast();
+          System.out.println(tokens);
+          tokens.addLast(x);
+          System.out.println(tokens);
+          System.out.println(x);
+        }
+        if (elements[i].equals("/")) {
+          Double x = tokens.removeLast();
+          Double y = tokens.removeLast();
+          Double z = y / x;
+          System.out.println(tokens);
+          tokens.addLast(z);
+          System.out.println(tokens);
+          System.out.println(z);
+        }
+        if (elements[i].equals("%")) {
+          Double x = tokens.removeLast();
+          Double y = tokens.removeLast();
+          Double z = y % x;
+          System.out.println(tokens);
+          tokens.addLast(z);
+          System.out.println(tokens);
+          System.out.println(z);
+        }
       }
     }
     //return tokens.getLast();
