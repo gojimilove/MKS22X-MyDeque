@@ -9,55 +9,55 @@ public class Calculator{
       //if its an integer add it to the Deque
       if (isDouble(elements[i])) {
         tokens.addLast(Double.parseDouble(elements[i]));
-        System.out.println(tokens);
+        //System.out.println(tokens);
         //System.out.println(elements[i]);
       }
       //if its an operator pop last 2 elements of deque and add a new one
       else if ("+-*/%".contains(elements[i])) {
-        System.out.println(elements[i]);
+        //System.out.println(elements[i]);
         if (elements[i].equals("+")) {
         	//order of addition doesnt matter
           Double x = tokens.removeLast() + tokens.removeLast();
-          System.out.println(tokens);
+          //System.out.println(tokens);
           //push new value
           tokens.addLast(x);
-          System.out.println(tokens);
-          System.out.println(x);
+          //System.out.println(tokens);
+          //System.out.println(x);
         }
         if (elements[i].equals("-")) {
         	//order matters for subtracting
           Double x = tokens.removeLast();
           Double y = tokens.removeLast();
           Double z = y - x;
-          System.out.println(tokens);
+          //System.out.println(tokens);
           tokens.addLast(z);
-          System.out.println(tokens);
-          System.out.println(z);
+          //System.out.println(tokens);
+          //System.out.println(z);
         }
         if (elements[i].equals("*")) {
           Double x = tokens.removeLast() * tokens.removeLast();
-          System.out.println(tokens);
+          //System.out.println(tokens);
           tokens.addLast(x);
-          System.out.println(tokens);
-          System.out.println(x);
+          //System.out.println(tokens);
+          //System.out.println(x);
         }
         if (elements[i].equals("/")) {
           Double x = tokens.removeLast();
           Double y = tokens.removeLast();
           Double z = y / x;
-          System.out.println(tokens);
+          //System.out.println(tokens);
           tokens.addLast(z);
-          System.out.println(tokens);
-          System.out.println(z);
+          //System.out.println(tokens);
+          //System.out.println(z);
         }
         if (elements[i].equals("%")) {
           Double x = tokens.removeLast();
           Double y = tokens.removeLast();
           Double z = y % x;
-          System.out.println(tokens);
+          //System.out.println(tokens);
           tokens.addLast(z);
-          System.out.println(tokens);
-          System.out.println(z);
+          //System.out.println(tokens);
+          //System.out.println(z);
         }
       }
     }
